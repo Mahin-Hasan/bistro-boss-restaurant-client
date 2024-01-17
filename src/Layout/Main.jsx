@@ -4,7 +4,8 @@ import Navbar from '../Shared/NavBar/Navbar';
 
 const Main = () => {
     const location = useLocation();
-    const noHeaderFooter = location.pathname.includes('login')
+    const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup')
+
 
     return (
         <div className='max-w-screen-xl mx-auto'>
