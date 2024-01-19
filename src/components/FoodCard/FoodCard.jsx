@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 
 
 const FoodCard = ({ item }) => {
@@ -11,10 +12,13 @@ const FoodCard = ({ item }) => {
     const location = useLocation();
     //advanced way for api calls
     const axiosSecure = useAxiosSecure();
+    //using refetch 
+    const [, refetch] = useCart();// first parameter is empty cz we are not using it
 
-    const handleAddToCart = food => {
-        console.log(food);
+    const handleAddToCart = () => {
+
         if (user && user.email) {
+            //console.log(food, user.email);
             //send cart to database || making it conditional because forcing user to login
             //add to cart functionality be careful with item id storing
 
@@ -38,6 +42,8 @@ const FoodCard = ({ item }) => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        //need to refetch the cart
+                        refetch(); // this refetch will optimize UI cart number reload without refresh
                     }
                 })
             //we will skip this traditional way
@@ -80,7 +86,7 @@ const FoodCard = ({ item }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={() => handleAddToCart(item)} className='btn btn-outline border-0 border-b-4 mt-4'>Add to Cart</button>
+                    <button onClick={handleAddToCart} className='btn btn-outline border-0 border-b-4 mt-4'>Add to Cart</button>
                 </div>
             </div>
         </div>
