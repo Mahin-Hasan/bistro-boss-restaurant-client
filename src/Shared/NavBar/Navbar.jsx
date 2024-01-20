@@ -19,7 +19,7 @@ const Navbar = () => {
         <li><Link to="/order/salad">Order Food</Link></li>
         <li><Link to="/secret">Secret</Link></li>
         <li>
-            <Link to="/">
+            <Link to="/dashboard/cart">
                 <button className="btn btn-sm">
                     <FaShoppingCart className="mr-2" />
                     <div className="badge badge-secondary">+{cart.length}</div>
@@ -57,8 +57,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
-                    {/* <img className="w-10 rounded-full" src={user?.photoURL} alt="" /> */}
+                    {/* <a className="btn">Button</a> */}
+                    <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
                 </div>
             </nav>
         </>
