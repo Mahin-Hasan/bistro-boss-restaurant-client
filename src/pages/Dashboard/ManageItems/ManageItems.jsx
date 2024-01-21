@@ -3,9 +3,10 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-    const [menu,refetch] = useMenu();
+    const [menu, refetch] = useMenu();
     const axiosSecure = useAxiosSecure();
 
 
@@ -22,10 +23,10 @@ const ManageItems = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {// add async
             if (result.isConfirmed) {
-                    const res = await axiosSecure.delete(`/menu/${item._id}`);
-                    console.log(res.data); //delete operation only works for the item that is added and has object id in mongo db
-              
-                  if(res.data.deletedCount >0){
+                const res = await axiosSecure.delete(`/menu/${item._id}`);
+                console.log(res.data); //delete operation only works for the item that is added and has object id in mongo db
+
+                if (res.data.deletedCount > 0) {
                     //refetch to update deleted state
                     refetch();
                     Swal.fire({
@@ -33,8 +34,8 @@ const ManageItems = () => {
                         title: "Deleted!",
                         text: `${item.name} has been deleted`,
                         icon: "success"
-                      });
-                  }
+                    });
+                }
             }
         });
     }
@@ -76,7 +77,9 @@ const ManageItems = () => {
                                     </td>
                                     <td className="text-right">$ {item.price}</td>
                                     <td>
-                                        <button className="btn btn-md bg-orange-500"><FaEdit className="text-white" /></button>
+                                        <Link to={`/dashboard/updateItem/${item._id}`}>
+                                            <button className="btn btn-md bg-orange-500"><FaEdit className="text-white" /></button>
+                                        </Link>
                                     </td>
                                     <td>
                                         <button onClick={() => handleDeleteItem(item)} className="btn btn-ghost btn-lg"><FaTrash className="text-red-600" /></button>

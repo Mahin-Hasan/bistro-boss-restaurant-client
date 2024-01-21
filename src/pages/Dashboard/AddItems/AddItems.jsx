@@ -14,6 +14,41 @@ const AddItems = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic(); //for imgbb
     const axiosSecure = useAxiosSecure();// for add operation specific to admin
+    // const onSubmit = async (data) => {
+    //     console.log(data)
+    //     // image upload to imgbb and then get an url
+    //     const imageFile = { image: data.image[0] }
+    //     const res = await axiosPublic.post(image_hosting_api, imageFile, {
+    //         headers: {
+    //             'content-type': 'multipart/form-data'
+    //         }
+    //     });
+    //     if (res.data.success) {
+    //         // now send the menu item data to the server with the image url
+    //         const menuItem = {
+    //             name: data.name,
+    //             category: data.category,
+    //             price: parseFloat(data.price),
+    //             recipe: data.recipe,
+    //             image: res.data.data.display_url
+    //         }
+    //         // 
+    //         const menuRes = await axiosSecure.post('/menu', menuItem);
+    //         console.log(menuRes.data)
+    //         if(menuRes.data.insertedId){
+    //             // show success popup
+    //             reset();
+    //             Swal.fire({
+    //                 position: "top-end",
+    //                 icon: "success",
+    //                 title: `${data.name} is added to the menu.`,
+    //                 showConfirmButton: false,
+    //                 timer: 1500
+    //               });
+    //         }
+    //     }
+    //     console.log( 'with image url', res.data);
+    // };
     const onSubmit = async (data) => {
         console.log(data)
         console.log(data.image[0])
