@@ -45,13 +45,13 @@ const DashBoard = () => {
                                         <NavLink to="/dashboard/cart"><FaShoppingCart /> My Cart ({cart.length})</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/dashboard/reservation"><FaCalendar /> Reservation</NavLink>
+                                        <NavLink to="/dashboard/history"><FaCalendar /> NOt History</NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/review"><FaInfo /> Add a Review</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/dashboard/bookings"><FaSave /> My Bookings</NavLink>
+                                        <NavLink to="/dashboard/paymentHistory"><FaSave /> Real Payment History</NavLink>
                                     </li></>
                         }
                         {/* shared nav links */}
